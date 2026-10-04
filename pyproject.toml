@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "toolforge"
+version = "0.1.0"
+description = "生产级 Function Calling 工具层：重试 / 超时 / 限流 / 熔断 / 审计 / 指标"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "flyingbeez" }]
+keywords = ["function-calling", "tool-use", "agent", "llm", "retry", "circuit-breaker", "observability"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.5", "mypy>=1.10"]
+
+[project.urls]
+Homepage = "https://github.com/flyingbeez/tool-forge"
+
+[tool.setuptools]
+packages = ["toolforge"]
+
+[tool.ruff]
+line-length = 115
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_unused_ignores = true
+ignore_missing_imports = true

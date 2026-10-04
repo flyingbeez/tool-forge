@@ -1,0 +1,35 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Show installed packages (project has zero runtime deps)
+        run: python -m pip list
+
+      - name: Run unit tests
+        run: python run_tests.py
+
+      - name: Run examples (must work without any API key)
+        run: |
+          python examples/01_retry_and_timeout.py
+          python examples/02_circuit_breaker.py
+          python examples/03_audit_and_metrics.py

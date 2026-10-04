@@ -1,0 +1,41 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+.venv/
+venv/
+env/
+
+# ---- 测试与覆盖率 ----
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+tests/tmp*
+tests/tmp_audit_*.jsonl
+
+# ---- 环境变量与密钥（绝对不要提交） ----
+.env
+.env.*
+!.env.example
+*.key
+*_token.txt
+
+# ---- 编辑器 / 系统 ----
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# ---- 运行产物 ----
+audit.jsonl
+*.audit.jsonl
